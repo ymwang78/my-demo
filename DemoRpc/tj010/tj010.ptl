@@ -1,0 +1,59 @@
+namespace tj010
+{
+    struct UnitModel
+    {
+        int NumberofNumerator;
+        int NumberofDenominator;
+        float NumeratorCoefficient[~];
+        float DenominatorCoefficient[~];
+        int UnitStepRespLength;
+        float UnitStepResponse[~];
+        int delay;
+        float StableGain;
+        int IntegralMark;
+    };
+
+    struct SetupModelInput
+    {
+        int InputNum;
+        int OutputNum;
+        struct UnitModel ControlModel[~];
+        struct UnitModel PlantModel[~];
+        int ControlModelFlag;
+        int PlantModelFlag;
+        int ControlInterval;
+    };
+
+    struct SetupModelOutput
+    {
+        int iOutput;
+        astring szOutput[~];
+        float fOutput;
+        double dOutput;
+        struct UnitModel uModel;
+    };
+
+    struct SetupModel
+    /*[function]*/
+    {
+        struct SetupModelInput Input;
+        struct SetupModelOutput Output;
+    };
+    
+    struct NoneArg
+    /*[function]*/
+    {
+    };
+
+    struct NoneArgFunctionCall 
+    /*[function]*/
+    {
+    };
+
+    struct PureFunctionCall
+    /*[function]*/
+    {
+        string Input[~];
+    };
+
+}

@@ -1,0 +1,93 @@
+namespace rpcdemo
+{
+    struct RpcCallVoid
+    /*[function]*/
+    {
+    };
+    struct RpcCallInt32
+    /*[function]*/
+    {
+        int32 Input;
+        int32 Output;
+    };
+    struct RpcCallInt32Vec
+    /*[function]*/
+    {
+        int32 Input[~];
+        int32 Output[~];
+    };
+    struct RpcCallInt64
+    /*[function]*/
+    {
+        int64 Input;
+        int64 Output;
+    };
+    struct RpcCallInt64Vec
+    /*[function]*/
+    {
+        int64 Input[~];
+        int64 Output[~];
+    };
+    struct RpcCallDouble
+    /*[function]*/
+    {
+        double Input;
+        double Output;
+    };
+    struct RpcCallDoubleVec
+    /*[function]*/
+    {
+        double Input[~];
+        double Output[~];
+    };
+    struct RpcCallString
+    /*[function]*/
+    {
+        astring Input[~];
+        astring Output[~];
+    };
+
+    struct ArgsMixed
+    {
+        char i8Val;
+        char i8ValVec[~];
+        int16 i16Val;
+        int16 i16ValVec[~];
+        int32 i32Val;
+        int32 i32ValVec[~];
+        int64 i64Val;
+        int64 i64ValVec[~];
+        float fltVal;
+        float fltValVec[~];
+        double dblVal;
+        double dblValVec[~];
+        astring strVal[~];
+    };
+
+    struct RpcCallMixed
+    /*[function]*/
+    {
+        struct ArgsMixed Input;
+        struct ArgsMixed Output;
+    };
+
+    struct ArgsDeepMixed
+    {
+        uchar ui8Val;
+        uchar ui8ValVec[~];
+        ushort ui16Val;
+        ushort ui16ValVec[~];
+        struct ArgsMixed tMixed;
+        uint32 ui32Val;
+        uint32 ui32ValVec[~];
+        uint64 ui64Val;
+        uint64 ui64ValVec[~];
+    };
+
+    struct RpcCallDeepMixed
+    /*[function]*/
+    {
+        struct ArgsDeepMixed Input;
+        struct ArgsDeepMixed Output;
+    };
+}
