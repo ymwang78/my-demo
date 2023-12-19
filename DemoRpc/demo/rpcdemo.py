@@ -25,6 +25,7 @@ class ArgsDeepMixed :
         self.ui32ValVec = []
         self.ui64Val = 0
         self.ui64ValVec = []
+        self.tMixedVec = []
 def registe_class():
     zce.registe_class(ArgsMixed)
     zce.registe_class(ArgsDeepMixed)

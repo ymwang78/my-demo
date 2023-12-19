@@ -1,47 +1,68 @@
 namespace rpcdemo
 {
+    [function]
     struct RpcCallVoid
-    /*[function]*/
     {
     };
+
+    [function]
     struct RpcCallInt32
-    /*[function]*/
     {
         int32 Input;
         int32 Output;
     };
+
+    [function]
     struct RpcCallInt32Vec
-    /*[function]*/
     {
         int32 Input[~];
         int32 Output[~];
     };
+
+    [function]
     struct RpcCallInt64
-    /*[function]*/
     {
         int64 Input;
         int64 Output;
     };
+
+    [function]
     struct RpcCallInt64Vec
-    /*[function]*/
     {
         int64 Input[~];
         int64 Output[~];
     };
+
+    [function]
+    struct RpcCallFloat
+    {
+        float Input;
+        float Output;
+    };
+
+    [function]
+    struct RpcCallFloatVec
+    {
+        float Input[~];
+        float Output[~];
+    };
+
+    [function]
     struct RpcCallDouble
-    /*[function]*/
     {
         double Input;
         double Output;
     };
+
+    [function]
     struct RpcCallDoubleVec
-    /*[function]*/
     {
         double Input[~];
         double Output[~];
     };
+
+    [function]
     struct RpcCallString
-    /*[function]*/
     {
         astring Input[~];
         astring Output[~];
@@ -64,8 +85,8 @@ namespace rpcdemo
         astring strVal[~];
     };
 
+    [function]
     struct RpcCallMixed
-    /*[function]*/
     {
         struct ArgsMixed Input;
         struct ArgsMixed Output;
@@ -82,12 +103,27 @@ namespace rpcdemo
         uint32 ui32ValVec[~];
         uint64 ui64Val;
         uint64 ui64ValVec[~];
+        struct ArgsMixed tMixedVec[~];
     };
 
+    [function]
     struct RpcCallDeepMixed
-    /*[function]*/
     {
         struct ArgsDeepMixed Input;
         struct ArgsDeepMixed Output;
+    };
+
+    [function]
+    struct RpcCallDeepMixedVecArgs
+    {
+        [tuple] struct ArgsDeepMixed Input;
+        [tuple] struct ArgsDeepMixed Output;
+    };
+
+    [function]
+    struct RpcCallDeepMixedVecArgsReturnList
+    {
+        [tuple] struct ArgsDeepMixed Input;
+        [tuple] struct ArgsDeepMixed Output;
     };
 }

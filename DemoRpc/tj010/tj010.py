@@ -26,7 +26,24 @@ class SetupModelOutput :
         self.fOutput = 0.0
         self.dOutput = 0.0
         self.uModel = UnitModel()
+class SetupModel :
+    def __init__(self) :
+        self.Input = SetupModelInput()
+        self.Output = SetupModelOutput()
+class NoneArg :
+    def __init__(self) :
+        self.dummy = 0
+class NoneArgFunctionCall :
+    def __init__(self) :
+        self.dummy = 0
+class PureFunctionCall :
+    def __init__(self) :
+        self.Input = ""
 def registe_class():
     zce.registe_class(UnitModel)
     zce.registe_class(SetupModelInput)
     zce.registe_class(SetupModelOutput)
+    zce.registe_class(SetupModel)
+    zce.registe_class(NoneArg)
+    zce.registe_class(NoneArgFunctionCall)
+    zce.registe_class(PureFunctionCall)
