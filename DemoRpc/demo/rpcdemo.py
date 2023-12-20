@@ -1,4 +1,3 @@
-import zce
 class ArgsMixed :
     def __init__(self) :
         self.i8Val = 0
@@ -14,6 +13,7 @@ class ArgsMixed :
         self.dblVal = 0.0
         self.dblValVec = []
         self.strVal = ""
+
 class ArgsDeepMixed :
     def __init__(self) :
         self.ui8Val = 0
@@ -26,6 +26,12 @@ class ArgsDeepMixed :
         self.ui64Val = 0
         self.ui64ValVec = []
         self.tMixedVec = []
+
 def registe_class():
+
+    import zce
+
     zce.registe_class(ArgsMixed)
+
     zce.registe_class(ArgsDeepMixed)
+
