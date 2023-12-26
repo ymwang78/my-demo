@@ -1,8 +1,23 @@
 namespace rpcdemo
 {
+
+    [function]
+    struct CreateDemoInstance
+    {
+        string Input[~];
+        [zobject] any Output;
+    };
+
     [function]
     struct RpcCallVoid
     {
+    };
+
+    [function]
+    struct RpcCallAny
+    {
+        any Input;
+        any Output;
     };
 
     [function]
@@ -70,6 +85,7 @@ namespace rpcdemo
 
     struct ArgsMixed
     {
+        any anyVal;
         char i8Val;
         char i8ValVec[~];
         int16 i16Val;
@@ -126,4 +142,16 @@ namespace rpcdemo
         [tuple] struct ArgsDeepMixed Input;
         [tuple] struct ArgsDeepMixed Output;
     };
+        
+    [function, "classmember"]
+    struct DemoInstanceSetStatus
+    {
+        [tuple] struct ArgsDeepMixed Input;
+    };
+    [function, "classmember"]
+    struct DemoInstanceGetStatus
+    {
+        [tuple] struct ArgsDeepMixed Output;
+    };
+
 }

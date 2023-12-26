@@ -1,5 +1,6 @@
-class ArgsMixed :
+﻿class ArgsMixed :
     def __init__(self) :
+        self.anyVal = None
         self.i8Val = 0
         self.i8ValVec = []
         self.i16Val = 0

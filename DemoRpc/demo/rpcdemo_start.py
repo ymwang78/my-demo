@@ -63,8 +63,58 @@ def RpcCallDeepMixedVecArgsReturnList(ui8Val, ui8ValVec, ui16Val, ui16ValVec, tM
     print("RpcCallDeepMixedVecArgs", ui8Val, ui8ValVec, ui16Val, ui16ValVec, tMixed, ui32Val, ui32ValVec, ui64Val, ui64ValVec, tMixedVec)
     return [ui8Val, ui8ValVec, ui16Val, ui16ValVec, tMixed, ui32Val, ui32ValVec, ui64Val, ui64ValVec, tMixedVec]
 
+class DemoClass:
+    def __init__(self, name):
+        self.name = name
+        self.ui8Val = 0
+        self.ui8ValVec = []
+        self.ui16Val = 0
+        self.ui16ValVec = []
+        self.tMixed = ArgsMixed()
+        self.ui32Val = 0
+        self.ui32ValVec = []
+        self.ui64Val = 0
+        self.ui64ValVec = []
+        self.tMixedVec = []
+
+    def SetName(self, name):
+        self.name = name
+       
+    def GetName(self):
+        return self.name; 
+
+    def SetStatus(self, ui8Val, ui8ValVec, ui16Val, ui16ValVec, tMixed, ui32Val, ui32ValVec, ui64Val, ui64ValVec, tMixedVec):
+        self.ui8Val = ui8Val
+        self.ui8ValVec = ui8ValVec
+        self.ui16Val = ui16Val
+        self.ui16ValVec = ui16ValVec
+        self.tMixed = tMixed
+        self.ui32Val = ui32Val
+        self.ui32ValVec = ui32ValVec
+        self.ui64Val = ui64Val
+        self.ui64ValVec = ui64ValVec
+        self.tMixedVec = tMixedVec
+        print("SetStatus", ui8Val, ui8ValVec, ui16Val, ui16ValVec, tMixed, ui32Val, ui32ValVec, ui64Val, ui64ValVec, tMixedVec)
+
+    def GetStatus(self):
+        print("GetStatus", self.ui8Val, self.ui8ValVec, self.ui16Val, self.ui16ValVec, self.tMixed, self.ui32Val, self.ui32ValVec, self.ui64Val, self.ui64ValVec, self.tMixedVec)
+        return (self.ui8Val, self.ui8ValVec, self.ui16Val, self.ui16ValVec, self.tMixed, self.ui32Val, self.ui32ValVec, self.ui64Val, self.ui64ValVec, self.tMixedVec)
+
+def DemoInstanceCreate(name):
+    obj = DemoClass(name)
+    return zce.registe_object(obj)
+
+def DemoInstanceSetStatus(obj, ui8Val, ui8ValVec, ui16Val, ui16ValVec, tMixed, ui32Val, ui32ValVec, ui64Val, ui64ValVec, tMixedVec):
+    obj.SetStatus(ui8Val, ui8ValVec, ui16Val, ui16ValVec, tMixed, ui32Val, ui32ValVec, ui64Val, ui64ValVec, tMixedVec)
+
+def DemoInstanceGetStatus(obj):
+    return obj.GetStatus()
+
 registe_class()
 
+zce.registe_callable("CreateDemoInstance", DemoInstanceCreate)
+zce.registe_callable("DemoInstanceSetStatus", DemoInstanceSetStatus)
+zce.registe_callable("DemoInstanceGetStatus", DemoInstanceGetStatus)
 zce.registe_callable("RpcCallVoid", RpcCallVoid)
 zce.registe_callable("RpcCallInt32", RpcCallInt32)
 zce.registe_callable("RpcCallInt32Vec", RpcCallInt32Vec)

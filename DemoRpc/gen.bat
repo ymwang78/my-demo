@@ -7,12 +7,13 @@ move /y *.h ../../../../ding/
 move /y *.cpp ../../../../ding/
 cd ..
 
-cd tj010
+cd ../PyTaiji/tj010
 zgen -t zpy -f * -i tj010.ptl -o tj010
+copy /y tj010.py .\tj007pyInterface\DLL007data.py
 zgen -t header_zds -f * -I ding_inc.h -i tj010.ptl -o tj010
 zgen -t cpp_zds -f * -I ding_inc.h -I tj010.h -I tj010_pack.h -i tj010.ptl -o tj010
 move /y *.h ../../../../ding/
 move /y *.cpp ../../../../ding/
-cd ..
+cd ../../Debug/
 
 pause
