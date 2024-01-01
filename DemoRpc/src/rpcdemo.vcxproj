@@ -267,6 +267,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="..\bin\x64\Debug\start.py" />
     <None Include="..\demo\rpcdemo.ptl" />
     <None Include="..\demo\rpcdemo.py" />
     <None Include="..\demo\rpcdemo_start.py" />
@@ -274,7 +275,6 @@
     <None Include="..\rpcdemo_gen.bat" />
     <None Include="README.md" />
     <None Include="rpcdemo_config.ptl" />
-    <None Include="rpcdemo_proto_gen.bat" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="rpcdemo_config.h" />
@@ -290,6 +290,9 @@
     <ClCompile Include="rpcdemo_config_pack.cpp" />
     <ClCompile Include="rpcdemo_pack.cpp" />
     <ClCompile Include="rpcdemo_service.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\bin\x64\Debug\RpcDemo.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
