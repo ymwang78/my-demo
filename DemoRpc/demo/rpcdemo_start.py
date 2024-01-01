@@ -100,37 +100,32 @@ class DemoClass:
         print("GetStatus", self.ui8Val, self.ui8ValVec, self.ui16Val, self.ui16ValVec, self.tMixed, self.ui32Val, self.ui32ValVec, self.ui64Val, self.ui64ValVec, self.tMixedVec)
         return (self.ui8Val, self.ui8ValVec, self.ui16Val, self.ui16ValVec, self.tMixed, self.ui32Val, self.ui32ValVec, self.ui64Val, self.ui64ValVec, self.tMixedVec)
 
-def DemoInstanceCreate(name):
+def RpcDemoInstanceCreate(name):
     obj = DemoClass(name)
     return zce.registe_object(obj)
 
-def DemoInstanceSetStatus(obj, ui8Val, ui8ValVec, ui16Val, ui16ValVec, tMixed, ui32Val, ui32ValVec, ui64Val, ui64ValVec, tMixedVec):
+def RpcDemoInstanceSetStatus(obj, ui8Val, ui8ValVec, ui16Val, ui16ValVec, tMixed, ui32Val, ui32ValVec, ui64Val, ui64ValVec, tMixedVec):
     obj.SetStatus(ui8Val, ui8ValVec, ui16Val, ui16ValVec, tMixed, ui32Val, ui32ValVec, ui64Val, ui64ValVec, tMixedVec)
 
-def DemoInstanceGetStatus(obj):
+def RpcDemoInstanceGetStatus(obj):
     return obj.GetStatus()
 
-registe_class()
+def StartRpcServe():
+    
+    import inspect    
+    
+    registe_class()
+    
+    def get_functions():
+        return [(name, obj) for name, obj in globals().items() if inspect.isfunction(obj)]
 
-zce.registe_callable("CreateDemoInstance", DemoInstanceCreate)
-zce.registe_callable("DemoInstanceSetStatus", DemoInstanceSetStatus)
-zce.registe_callable("DemoInstanceGetStatus", DemoInstanceGetStatus)
-zce.registe_callable("RpcCallVoid", RpcCallVoid)
-zce.registe_callable("RpcCallInt32", RpcCallInt32)
-zce.registe_callable("RpcCallInt32Vec", RpcCallInt32Vec)
-zce.registe_callable("RpcCallInt64", RpcCallInt64)
-zce.registe_callable("RpcCallInt64Vec", RpcCallInt64Vec)
-zce.registe_callable("RpcCallFloat", RpcCallFloat)
-zce.registe_callable("RpcCallFloatVec", RpcCallFloatVec)
-zce.registe_callable("RpcCallDouble", RpcCallDouble)
-zce.registe_callable("RpcCallDoubleVec", RpcCallDoubleVec)
-zce.registe_callable("RpcCallString", RpcCallString)
-zce.registe_callable("RpcCallMixed", RpcCallMixed)
-zce.registe_callable("RpcCallDeepMixed", RpcCallDeepMixed)
-zce.registe_callable("RpcCallDeepMixedVecArgs", RpcCallDeepMixedVecArgs)
-zce.registe_callable("RpcCallDeepMixedVecArgsReturnList", RpcCallDeepMixedVecArgsReturnList)
+    # 当前模块中的所有函数
+    current_module_functions = get_functions()
+    for name, obj in current_module_functions:
+        if (name.startswith("Rpc")):
+            zce.registe_callable(name, obj)    
 
-zce.registe_meta("demo/demo.ptl")
+    zce.registe_meta(os.path.join(os.path.dirname(__file__), 'demo.ptl'))
 
-#zce.rpc_close(serv_obj)
+StartRpcServe()
 
